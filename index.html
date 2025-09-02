@@ -39,11 +39,32 @@
         opacity: 0;
       }
     }
+    /* Music button styling */
+    #play-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+    #play-btn:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
 
   <h1>Happyy birthdayy Ashhiii!!💖</h1>
+
+  <!-- Music button -->
+  <div style="text-align:center; margin: 15px 0;">
+    <button id="play-btn">🎵 Play Music</button>
+  </div>
+
   <p>You mean the world to me sweetheart 🌸. Happiestt birthday ashii...</p>
 
   <div class="gallery">
@@ -53,14 +74,23 @@
   </div>
 
   <!-- Hidden music -->
-  <audio id="bg-music" autoplay loop style="display:none;">
+  <audio id="bg-music" loop style="display:none;">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Ensure music plays on first click
-    document.addEventListener("click", function() {
-      document.getElementById("bg-music").play();
+    // Music control with button
+    const playBtn = document.getElementById("play-btn");
+    const music = document.getElementById("bg-music");
+
+    playBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        playBtn.innerText = "🔇 Pause Music";
+      } else {
+        music.pause();
+        playBtn.innerText = "🎵 Play Music";
+      }
     });
 
     // Falling hearts generator
@@ -76,7 +106,7 @@
         heart.remove();
       }, 5000);
     }
-    setInterval(createHeart, 500);
+    setInterval(createHeart, 800); // slowed a bit for subtle effect
   </script>
 
 </body>
