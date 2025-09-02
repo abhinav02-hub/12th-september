@@ -9,7 +9,7 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       text-align: center;
-      overflow: hidden;
+      overflow-y: auto; /* ✅ allow scrolling for long text */
       position: relative;
     }
 
@@ -22,7 +22,6 @@
       opacity: 0.2; /* faded effect */
       z-index: 0;
     }
-
 
     h1 {
       margin-top: 40px;
@@ -44,20 +43,14 @@
       transform: scale(1.05);
     }
 
-    /* Falling hearts animation */
+    /* Falling hearts base style */
     .heart {
-      position: fixed;
+      position: absolute; /* ✅ absolute instead of fixed */
       top: -50px;
       font-size: 2rem;
       color: red;
-      animation: fall linear forwards;
       z-index: 2;
-    }
-    @keyframes fall {
-      to {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
+      pointer-events: none;
     }
 
     /* Music button styling */
@@ -137,14 +130,35 @@
       heart.classList.add("heart");
       heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+      // Random duration
+      const duration = 3 + Math.random() * 4;
+
+      // Full page height
+      const pageHeight = document.documentElement.scrollHeight;
+
+      // Animate heart
+      heart.animate(
+        [
+          { transform: "translateY(0)", opacity: 1 },
+          { transform: `translateY(${pageHeight}px)`, opacity: 0 }
+        ],
+        {
+          duration: duration * 1000,
+          easing: "linear",
+          fill: "forwards"
+        }
+      );
+
       document.body.appendChild(heart);
 
+      // Remove after falling
       setTimeout(() => {
         heart.remove();
-      }, 5000);
+      }, duration * 1000);
     }
-    setInterval(createHeart, 800); // slowed a bit for subtle effect
+
+    setInterval(createHeart, 800); // slowed for subtle effect
   </script>
 
 </body>
