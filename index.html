@@ -10,21 +10,39 @@
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       text-align: center;
       overflow: hidden;
+      position: relative;
     }
+
+    /* Background faded image */
+    .bg-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.2; /* faded effect */
+      z-index: 0;
+    }
+
     h1 {
       margin-top: 40px;
       font-size: 3em;
+      position: relative;
+      z-index: 1;
     }
+
     .gallery img {
       width: 200px;
       margin: 10px;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: transform 0.3s;
+      position: relative;
+      z-index: 1;
     }
     .gallery img:hover {
       transform: scale(1.05);
     }
+
     /* Falling hearts animation */
     .heart {
       position: fixed;
@@ -32,6 +50,7 @@
       font-size: 2rem;
       color: red;
       animation: fall linear forwards;
+      z-index: 2;
     }
     @keyframes fall {
       to {
@@ -39,6 +58,7 @@
         opacity: 0;
       }
     }
+
     /* Music button styling */
     #play-btn {
       padding: 10px 20px;
@@ -50,28 +70,45 @@
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       transition: transform 0.2s;
+      position: relative;
+      z-index: 1;
     }
     #play-btn:hover {
       transform: scale(1.05);
+    }
+
+    p {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 15px auto;
+      font-size: 1.2em;
     }
   </style>
 </head>
 <body>
 
+  <!-- Background faded image -->
+  <img src="bg.jpg" alt="Background" class="bg-image">
+
   <h1>Happyy birthdayy Ashhiii!!💖</h1>
 
   <!-- Music button -->
-  <div style="text-align:center; margin: 15px 0;">
+  <div style="text-align:center; margin: 15px 0; position: relative; z-index:1;">
     <button id="play-btn">Click here 🎵</button>
   </div>
 
-  <p>You mean the world to me sweetheart 🌸. Happiestt birthday ashii...</p>
+  <!-- First half of paragraph -->
+  <p>You mean the world to me sweetheart 🌸. Happiestt birthday ashii, today is so special because it’s all about you...</p>
 
+  <!-- 2 Images only -->
   <div class="gallery">
     <img src="iokk.jpg" alt="Memory 1">
     <img src="plzzz.jpg" alt="Memory 2">
-    <img src="photo3.jpg" alt="Memory 3">
   </div>
+
+  <!-- Second half of paragraph -->
+  <p>...I feel so lucky to share these beautiful memories with you and I can’t wait to make many more together 💕.</p>
 
   <!-- Hidden music -->
   <audio id="bg-music" loop style="display:none;">
