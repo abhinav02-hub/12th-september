@@ -16,7 +16,7 @@
     /* Background faded image */
     .bg-image {
       position: absolute;
-      top: 50%;
+      top: 60%;
       left: 50%;
       transform: translate(-50%, -50%);
       opacity: 0.2; /* faded effect */
@@ -63,12 +63,22 @@
       font-size: 1rem;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: transform 0.2s;
       position: relative;
       z-index: 1;
+      animation: heartbeat 1.5s infinite; /* ❤️ heartbeat effect */
     }
     #play-btn:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
+    }
+
+    /* Heartbeat keyframes */
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      20% { transform: scale(1.2); }
+      40% { transform: scale(1); }
+      60% { transform: scale(1.2); }
+      80% { transform: scale(1); }
+      100% { transform: scale(1); }
     }
 
     p {
