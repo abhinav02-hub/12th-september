@@ -5,34 +5,20 @@
   <title>For My Love ❤️</title>
   <style>
     body {
+    
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      color: #333;
       text-align: center;
-      overflow-x: hidden;
+      overflow: hidden;
     }
     h1 {
-      font-size: 3em;
       margin-top: 40px;
-      animation: fadeIn 2s ease-in-out;
-    }
-    p {
-      font-size: 1.3em;
-      margin: 20px auto;
-      max-width: 600px;
-      line-height: 1.6;
-    }
-    .gallery {
-      margin: 30px auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+      font-size: 3em;
     }
     .gallery img {
-      width: 250px;
-      height: auto;
+      width: 200px;
+      margin: 10px;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: transform 0.3s;
@@ -40,50 +26,59 @@
     .gallery img:hover {
       transform: scale(1.05);
     }
+    /* Falling hearts animation */
     .heart {
-      font-size: 2em;
+      position: fixed;
+      top: -50px;
+      font-size: 2rem;
       color: red;
-      animation: heartbeat 1.5s infinite;
+      animation: fall linear forwards;
     }
-    footer {
-      margin-top: 40px;
-      font-size: 1em;
-      color: #555;
-    }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.3); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
 
   <h1>Hi My Love 💖</h1>
-  <p>
-    This page is just for you. You mean the world to me, and I wanted to make something special.  
-    Every memory with you is my favorite. 🌸
-  </p>
+  <p>You mean the world to me 🌸</p>
 
   <div class="gallery">
-    <img src="iokk.jpg" alt="Memory 1">
-    <img src="plzzz.jpg" alt="Memory 2">
-    <img src="https://placekitten.com/402/400" alt="Memory 3">
+    <img src="photo1.jpg" alt="Memory 1">
+    <img src="photo2.jpg" alt="Memory 2">
+    <img src="photo3.jpg" alt="Memory 3">
   </div>
 
-  <p class="heart">❤️❤️❤️</p>
+  <!-- Hidden music -->
+  <audio id="bg-music" autoplay loop style="display:none;">
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
 
-  <p>
-    Here’s to us, forever and always. <br>
-    I love you endlessly. 💕
-  </p>
+  <script>
+    // Ensure music plays on first click
+    document.addEventListener("click", function() {
+      document.getElementById("bg-music").play();
+    });
 
-  <footer>
-    Made with 💖 by [Your Name]
-  </footer>
+    // Falling hearts generator
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    setInterval(createHeart, 500);
+  </script>
 
 </body>
 </html>
