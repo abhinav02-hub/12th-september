@@ -3,24 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>For My Sweetheart ❤️</title>
- <style>
+
+  <!-- Mobile optimization -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       text-align: center;
-      overflow-y: auto; /* ✅ allow scrolling for long text */
+      overflow-y: auto; /* allow scrolling */
       position: relative;
     }
 
     /* Background faded image */
     .bg-image {
       position: absolute;
-      top: 45%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       opacity: 0.2; /* faded effect */
       z-index: 0;
+      max-width: 100%;
+      height: auto;
     }
 
     h1 {
@@ -32,12 +38,14 @@
 
     .gallery img {
       width: 200px;
+      max-width: 90%; /* responsive */
       margin: 10px;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: transform 0.3s;
       position: relative;
       z-index: 1;
+      height: auto;
     }
     .gallery img:hover {
       transform: scale(1.05);
@@ -45,7 +53,7 @@
 
     /* Falling hearts base style */
     .heart {
-      position: absolute; /* ✅ absolute instead of fixed */
+      position: absolute;
       top: -50px;
       font-size: 2rem;
       color: red;
@@ -65,13 +73,12 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.2);
       position: relative;
       z-index: 1;
-      animation: heartbeat 1.5s infinite; /* ❤️ heartbeat effect */
+      animation: heartbeat 1.5s infinite;
     }
     #play-btn:hover {
       transform: scale(1.1);
     }
 
-    /* Heartbeat keyframes */
     @keyframes heartbeat {
       0% { transform: scale(1); }
       20% { transform: scale(1.2); }
@@ -87,9 +94,10 @@
       max-width: 600px;
       margin: 15px auto;
       font-size: 1.2em;
+      padding: 0 10px; /* mobile padding */
     }
 
-    /* ✅ Signature at bottom-right of page */
+    /* Signature at bottom-right */
     .signature {
       text-align: right;
       margin-right: 20px;
@@ -97,8 +105,10 @@
       font-size: 1.1em;
       font-style: italic;
       color: #b30059;
+      position: relative;
+      z-index: 1;
     }
-</style>
+  </style>
 
 </head>
 <body>
@@ -112,6 +122,7 @@
   <div style="text-align:center; margin: 15px 0; position: relative; z-index:1;">
     <button id="play-btn">Click here 🎵</button>
   </div>
+
   <div class="gallery">
     <center><img src="download.jpeg" alt="bday-cat"></center>
   </div>
@@ -140,20 +151,18 @@ even 10% what i feel for you ,, czz i couldn't be expressed by words...but you a
   you are my first thought in the morning and last memory in the night, nd you'll always be. Whenever you feel low just tell me, i'll do everything that will be possible
   to make you feel good, and remember you dont have to deal with something alone, you have me. I am nd i will be thee for you till my last breath. I know ashii im not perfect, 
   but i am trying to be the best for you i do make mistakes, sometimes ruin your mood, but i swear,, i'll always keep you happy, i'll never let your beautiful smile fade away.</p>
+
   <p>I lovve youu soo muchh ashii and I promise i'll lovee you the same way alwayss. Again, HAPPY BIRTHDAY ASHII. I love You ❤️</p>
+
   <div class="gallery">
     <center><img src="plzzz.jpg" alt="shycat"></center>
   </div>
-  <p>
 
-
-
-
-</p>
   <p>I mean every word, each and every line of what I said, I meant It with my whole heart and soul.</p>
   <p>I love you so muchh. Happy birthday love ❤️</p>
-  <!-- At the very end of your body, just before </body> -->
-<p class="signature">From your Dr. Abhie 🤍</p>
+
+  <!-- Signature -->
+  <p class="signature">From your Dr. Abhie 🤍</p>
   
   <!-- Hidden music -->
   <audio id="bg-music" loop style="display:none;">
