@@ -7,13 +7,16 @@
   <!-- Mobile optimization -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Dancing Script font -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       text-align: center;
-      overflow-y: auto; /* allow scrolling */
+      overflow-y: auto;
       position: relative;
     }
 
@@ -23,7 +26,7 @@
       top: 35%;
       left: 50%;
       transform: translate(-50%, -50%);
-      opacity: 0.4.5; /* faded effect */
+      opacity: 0.45;
       z-index: 0;
       max-width: 80%;
       height: auto;
@@ -34,11 +37,13 @@
       font-size: 3em;
       position: relative;
       z-index: 1;
+      font-family: 'Dancing Script', cursive; /* ✅ Dancing Script */
+      color: #b30059; /* ✅ Dark pink for contrast */
     }
 
     .gallery img {
       width: 200px;
-      max-width: 90%; /* responsive */
+      max-width: 90%;
       margin: 10px;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -51,12 +56,11 @@
       transform: scale(1.05);
     }
 
-    /* Falling hearts base style */
-    .heart {
+    /* Falling emoji base style */
+    .falling {
       position: absolute;
       top: -50px;
       font-size: 2rem;
-      color: red;
       z-index: 2;
       pointer-events: none;
     }
@@ -94,10 +98,9 @@
       max-width: 600px;
       margin: 15px auto;
       font-size: 1.2em;
-      padding: 0 10px; /* mobile padding */
+      padding: 0 10px;
     }
 
-    /* Signature at bottom-right */
     .signature {
       text-align: right;
       margin-right: 20px;
@@ -109,7 +112,6 @@
       z-index: 1;
     }
   </style>
-
 </head>
 <body>
 
@@ -152,7 +154,7 @@ even 10% what i feel for you ,, czz it couldn't be expressed by words...but you 
   to make you feel good, and remember you dont have to deal with something alone, you have me. I am nd i will always be there for you till my last breath. I know ashii im not perfect, 
   but i am trying to be the best for you, i do make mistakes, sometimes ruin your mood, but i swear,, i'll always keep you happy, i'll never let your beautiful smile fade away.</p>
 
-  <p>I lovve youu soo muchh ashii and I promise i'll lovee you the same way alwayss. Again, HAPPY BIRTHDAY ASHII ❤️</p>
+ <p>I lovve youu soo muchh ashii and I promise i'll lovee you the same way alwayss. Again, HAPPY BIRTHDAY ASHII ❤️</p>
 
   <div class="gallery">
     <center><img src="plzzz.jpg" alt="shycat"></center>
@@ -170,7 +172,7 @@ even 10% what i feel for you ,, czz it couldn't be expressed by words...but you 
   </audio>
 
   <script>
-    // Music control with button
+    // Music control
     const playBtn = document.getElementById("play-btn");
     const music = document.getElementById("bg-music");
 
@@ -184,42 +186,38 @@ even 10% what i feel for you ,, czz it couldn't be expressed by words...but you 
       }
     });
 
-    // Falling hearts generator
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
+    // Falling emojis generator
+    function createFalling() {
+      const el = document.createElement("div");
+      el.classList.add("falling");
 
-      // Random duration
-      const duration = 3 + Math.random() * 4;
+      // Randomly choose ❤️ or 🌸
+      el.innerHTML = Math.random() > 0.5 ? "❤️" : "🌸";
+      el.style.left = Math.random() * 100 + "vw";
 
-      // Full page height
-      const pageHeight = document.documentElement.scrollHeight;
+      const duration = 6000 + Math.random() * 4000; // slower
+      const pageHeight = window.innerHeight + 100;
 
-      // Animate heart
-      heart.animate(
+      el.animate(
         [
-          { transform: "translateY(0)", opacity: 1 },
-          { transform: `translateY(${pageHeight}px)`, opacity: 0 }
+          { transform: "translateY(0) rotate(0deg)", opacity: 1 },
+          { transform: `translateY(${pageHeight}px) rotate(360deg)`, opacity: 0 }
         ],
         {
-          duration: duration * 1000,
+          duration: duration,
           easing: "linear",
           fill: "forwards"
         }
       );
 
-      document.body.appendChild(heart);
+      document.body.appendChild(el);
 
-      // Remove after falling
       setTimeout(() => {
-        heart.remove();
-      }, duration * 1000);
+        el.remove();
+      }, duration + 100);
     }
 
-    setInterval(createHeart, 800); // slowed for subtle effect
+    setInterval(createFalling, 1000); // balanced frequency
   </script>
-
 </body>
 </html>
